@@ -1,0 +1,156 @@
+// =============================================================================
+//
+// Waybar configuration
+//
+// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+//
+// =============================================================================
+
+{
+    // -------------------------------------------------------------------------
+    // Global configuration
+    // -------------------------------------------------------------------------
+
+    "layer": "top",
+	"output": "DP-2",	
+    "position": "top",
+    // If height property would be not present, it'd be calculated dynamically
+    "height": 30,
+
+    "modules-left": [
+    	"hyprland/workspaces",
+    	"hyprland/window"
+    	//"hyprland/windowcount",
+    ],
+    "modules-center": [
+    ],
+    "modules-right": [
+    	"hyprland/language",
+        "pulseaudio",
+        "cpu",
+    	"network",
+        "clock#date"
+        //"custom/showdesktop"
+    ],
+
+
+    // -------------------------------------------------------------------------
+    // Modules
+    // -------------------------------------------------------------------------
+
+	"custom/showdesktop": {
+	  "format": "{icon} ",
+      "format-icons": ["🖥"],
+      "on-click": "~/.config/waybar/scripts/show_desktop.sh"
+	},
+
+	"hyprland/workspaces": {
+	  "all-outputs": false,
+	  "persistent-workspaces": {
+	  	"DP-2": [2, 3]
+	  }
+	},
+
+	"hyprland/language": {
+	    "format": "{shortDescription}-{short}  ",
+	    "keyboard-name": "cx-2.4g-wireless-receiver"
+	},
+
+	"hyprland/windowcount": {
+	    "format": "[{}]",
+	    "format-empty": "[X]",
+	    "format-windowed": "[T]",
+	    // "format-fullscreen": "[{}]",
+	    "separate-outputs": true
+	},
+
+	"hyprland/window": {
+		"rewrite": {
+			"(.*) — Mozilla Firefox": "firefox",
+		}	
+	},
+	
+	"pulseaudio": {
+		"format": "vol: {volume}%",
+	    //"format": "vol: {volume}% {icon}",
+	    "format-bluetooth": "vol: {volume}%",
+	    //"format-muted": "",
+	    "format-icons": {
+	        "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+	        "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+	        "headphone": "",
+	        "hands-free": "",
+	        "headset": "",
+	        "phone": "",
+	        "phone-muted": "",
+	        "portable": "",
+	        "car": "",
+	        "default": ["", ""]
+	    },
+	    "scroll-step": 1,
+	    "on-click": "pavucontrol",
+	    "ignored-sinks": ["Easy Effects Sink"]
+	},
+	
+
+    "clock#time": {
+        "interval": 1,
+        "format": "{:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%A, %B %d, %Y}",
+    },
+
+    "clock#date": {
+      "interval": 10,
+      "format": "{:%H:%M}",
+      "tooltip-format": "{:%e/%m/%Y}",
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "cpu: {usage}%", // Icon: microchip
+        "states": {
+          "warning": 70,
+          "critical": 90
+        }
+    },
+    
+    "memory": {
+        "interval": 5,
+        "format": "mem:  {}%", // Icon: memory
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+    
+    "network": {
+        "interface": "eno1", // change to your ethernet interface name
+        //"format-ethernet": "",   // icon for connected
+        "format-ethernet": "online",
+        //"format-disconnected": "", // icon for disconnected,
+        "format-diconnected": "offline",
+        "tooltip-format": "{ifname} — {essid}{ipaddr}", // shows connection name / details
+        "tooltip-format-ethernet": "{ifname} — {ipaddr}", // ethernet-specific tooltip
+        "tooltip-format-disconnected": "No connection"
+    },
+
+    "temperature": {
+      "critical-threshold": 80,
+      "interval": 5,
+      "format": "{icon}  {temperatureC}°C",
+      "format-icons": [
+          "", // Icon: temperature-empty
+          "", // Icon: temperature-quarter
+          "", // Icon: temperature-half
+          "", // Icon: temperature-three-quarters
+          ""  // Icon: temperature-full
+      ],
+      "tooltip": true
+    },
+
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+}
