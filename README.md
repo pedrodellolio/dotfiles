@@ -1,7 +1,7 @@
 # Instructions
 1. Install required packages:
 
-   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol blueman fzf swaybg`
+   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol blueman fzf swaybg sddm`
 
 2. Get dotfiles:
 
@@ -26,8 +26,18 @@
     `sudo cp dotfiles/cliphist-rofi-img /usr/local/bin`
    
     `sudo chmod +x /usr/local/bin/cliphist-rofi-img`
-   
+5. Setup SDDM
 
-6. Setup A2DP profile for bluetooth headphones (like JBL handsfree):
+     `sudo systemctl enable sddm.service --force`
+   
+      `sudo systemctl disable gdm.service` (if GNOME)
+
+      Install a theme from https://store.kde.org
+
+      Move the theme to /usr/share/sddm/themes
+
+      Edit `/etc/sddm.conf` to apply the chosen theme
+   
+7. Setup A2DP profile for bluetooth headphones (like JBL handsfree):
 
    Connect device using blueman: `Right Click -> Audio Profile`
