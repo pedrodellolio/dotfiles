@@ -1,7 +1,7 @@
 # Instructions
 1. Install required packages:
 
-   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol blueman fzf swaybg sddm`
+   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol blueman fzf swaybg sddm pass`
 
 2. Get dotfiles:
 
@@ -41,3 +41,7 @@
 7. Setup A2DP profile for bluetooth headphones (like JBL handsfree):
 
    Connect device using blueman: `Right Click -> Audio Profile`
+   
+8. Storing Git Personal Access Token:
+
+    https://github.com/git-ecosystem/git-credential-manager/blob/main/docs/credstores.md
