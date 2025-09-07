@@ -1,7 +1,7 @@
 # Instructions
 1. Install required packages:
 
-   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol`
+   `sudo dnf install waybar mako foot micro rofi fastfetch zsh mate-polkit wl-clipboard pavucontrol blueman`
 
 2. Get dotfiles:
 
